@@ -34,18 +34,22 @@ const onClickRow = (row) => {
 <template>
     <tbody>
     <tr
+        v-if="resources.length"
         v-for="(row, rowIndex) in resources"
+        :class="rowClass"
     >
         <td
             v-for="(column, columnIndex) in columns"
             @click="onClickRow(row)"
-            :class="rowClass"
         >
             <component v-if="column.children && column.children.body" :is="column.children.body" :row="row" :column="column" :attribute="column.props.attribute" :label="column.props.label"/>
             <template v-else>
                 {{ row[column.props.attribute] }}
             </template>
         </td>
+    </tr>
+    <tr v-else>
+        <td :colspan="columns.length">No results.</td>
     </tr>
     </tbody>
 </template>

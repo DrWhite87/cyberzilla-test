@@ -46,15 +46,14 @@ $ php artisan migrate
 ```
 $ php artisan db:seed
 ```
-4. Добавить запись о домене для sanctum в .env файл
+5. Добавить запись о домене для sanctum в .env файл
 ```
 $ SANCTUM_STATEFUL_DOMAINS=ваш домен
 ```
-5. Установка пакетов npm
+
+## Авторизация
+
 ```
-$ npm i
-```
-6. Build
-```
-$ npm run build
+Login: admin@admin.com
+Password: password
 ```

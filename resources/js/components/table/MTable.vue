@@ -77,7 +77,7 @@ const onSortChange = (sortValue) => {
                 :columns="columns"
                 :resources="resources.data"
                 @clickRow="onClickRow"
-                :class="rowClass"
+                :rowClass="rowClass"
             />
         </table>
     </div>

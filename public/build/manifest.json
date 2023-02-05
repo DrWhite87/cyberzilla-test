@@ -8,27 +8,6 @@
     "src": "resources/sass/app.scss",
     "isEntry": true
   },
-  "resources/js/pages/users/Index.vue": {
-    "file": "assets/Index-8f5733d0.js",
-    "src": "resources/js/pages/users/Index.vue",
-    "isDynamicEntry": true,
-    "imports": [
-      "__plugin-vue_export-helper-12bcda84.js",
-      "_MTColumn-55816288.js",
-      "_users-3fd51020.js",
-      "_auth-8a346ea3.js"
-    ]
-  },
-  "resources/js/pages/users/Payments.vue": {
-    "file": "assets/Payments-955fd29e.js",
-    "src": "resources/js/pages/users/Payments.vue",
-    "isDynamicEntry": true,
-    "imports": [
-      "__plugin-vue_export-helper-12bcda84.js",
-      "_MTColumn-55816288.js",
-      "_auth-8a346ea3.js"
-    ]
-  },
   "resources/js/pages/Home.vue": {
     "file": "assets/Home-b4f29a40.js",
     "src": "resources/js/pages/Home.vue",
@@ -37,18 +16,64 @@
       "__plugin-vue_export-helper-12bcda84.js"
     ]
   },
+  "resources/js/pages/auth/Login.vue": {
+    "file": "assets/Login-92e22b5b.js",
+    "src": "resources/js/pages/auth/Login.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_auth-7afe0f1d.js",
+      "__plugin-vue_export-helper-12bcda84.js"
+    ]
+  },
+  "resources/js/pages/users/Index.vue": {
+    "file": "assets/Index-730792cb.js",
+    "src": "resources/js/pages/users/Index.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "__plugin-vue_export-helper-12bcda84.js",
+      "_MTColumn-4df841c0.js",
+      "_users-86c515c7.js",
+      "_auth-7afe0f1d.js"
+    ]
+  },
   "resources/js/pages/users/Edit.vue": {
-    "file": "assets/Edit-ca3c271d.js",
+    "file": "assets/Edit-7d42b52d.js",
     "src": "resources/js/pages/users/Edit.vue",
     "isDynamicEntry": true,
     "imports": [
       "__plugin-vue_export-helper-12bcda84.js",
-      "_users-3fd51020.js",
-      "_auth-8a346ea3.js"
+      "_users-86c515c7.js",
+      "_auth-7afe0f1d.js"
     ]
   },
-  "_MTColumn-55816288.js": {
-    "file": "assets/MTColumn-55816288.js",
+  "resources/js/pages/users/Payments.vue": {
+    "file": "assets/Payments-b6843ccc.js",
+    "src": "resources/js/pages/users/Payments.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "__plugin-vue_export-helper-12bcda84.js",
+      "_MTColumn-4df841c0.js",
+      "_auth-7afe0f1d.js"
+    ]
+  },
+  "_users-86c515c7.js": {
+    "file": "assets/users-86c515c7.js",
+    "imports": [
+      "_auth-7afe0f1d.js",
+      "__plugin-vue_export-helper-12bcda84.js"
+    ]
+  },
+  "resources/js/pages/auth/Register.vue": {
+    "file": "assets/Register-3ebc5470.js",
+    "src": "resources/js/pages/auth/Register.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_auth-7afe0f1d.js",
+      "__plugin-vue_export-helper-12bcda84.js"
+    ]
+  },
+  "_MTColumn-4df841c0.js": {
+    "file": "assets/MTColumn-4df841c0.js",
     "imports": [
       "__plugin-vue_export-helper-12bcda84.js"
     ],
@@ -56,33 +81,8 @@
       "assets/MTColumn-d0fdf03e.css"
     ]
   },
-  "_users-3fd51020.js": {
-    "file": "assets/users-3fd51020.js",
-    "imports": [
-      "_auth-8a346ea3.js",
-      "__plugin-vue_export-helper-12bcda84.js"
-    ]
-  },
-  "resources/js/pages/auth/Register.vue": {
-    "file": "assets/Register-b7d6385c.js",
-    "src": "resources/js/pages/auth/Register.vue",
-    "isDynamicEntry": true,
-    "imports": [
-      "_auth-8a346ea3.js",
-      "__plugin-vue_export-helper-12bcda84.js"
-    ]
-  },
-  "resources/js/pages/auth/Login.vue": {
-    "file": "assets/Login-5c852092.js",
-    "src": "resources/js/pages/auth/Login.vue",
-    "isDynamicEntry": true,
-    "imports": [
-      "_auth-8a346ea3.js",
-      "__plugin-vue_export-helper-12bcda84.js"
-    ]
-  },
-  "_auth-8a346ea3.js": {
-    "file": "assets/auth-8a346ea3.js",
+  "_auth-7afe0f1d.js": {
+    "file": "assets/auth-7afe0f1d.js",
     "imports": [
       "__plugin-vue_export-helper-12bcda84.js"
     ],
@@ -99,11 +99,11 @@
     "file": "assets/_plugin-vue_export-helper-12bcda84.js"
   },
   "resources/js/app.js": {
-    "file": "assets/app-6bfbb0d3.js",
+    "file": "assets/app-a99b0ece.js",
     "src": "resources/js/app.js",
     "isEntry": true,
     "imports": [
-      "_auth-8a346ea3.js",
+      "_auth-7afe0f1d.js",
       "__plugin-vue_export-helper-12bcda84.js"
     ]
   }
