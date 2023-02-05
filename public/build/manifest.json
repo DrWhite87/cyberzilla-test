@@ -1,0 +1,110 @@
+{
+  "MTColumn.css": {
+    "file": "assets/MTColumn-d0fdf03e.css",
+    "src": "MTColumn.css"
+  },
+  "resources/sass/app.scss": {
+    "file": "assets/app-96d4b2db.css",
+    "src": "resources/sass/app.scss",
+    "isEntry": true
+  },
+  "_users-8e0eee24.js": {
+    "file": "assets/users-8e0eee24.js",
+    "imports": [
+      "_auth-c4ae6726.js",
+      "__plugin-vue_export-helper-12bcda84.js"
+    ]
+  },
+  "resources/js/pages/auth/Register.vue": {
+    "file": "assets/Register-06ff9ce0.js",
+    "src": "resources/js/pages/auth/Register.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_auth-c4ae6726.js",
+      "__plugin-vue_export-helper-12bcda84.js"
+    ]
+  },
+  "resources/js/pages/users/Payments.vue": {
+    "file": "assets/Payments-de595ca4.js",
+    "src": "resources/js/pages/users/Payments.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "__plugin-vue_export-helper-12bcda84.js",
+      "_MTColumn-55816288.js",
+      "_auth-c4ae6726.js"
+    ]
+  },
+  "resources/js/pages/Home.vue": {
+    "file": "assets/Home-b4f29a40.js",
+    "src": "resources/js/pages/Home.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "__plugin-vue_export-helper-12bcda84.js"
+    ]
+  },
+  "resources/js/pages/users/Edit.vue": {
+    "file": "assets/Edit-e10683a0.js",
+    "src": "resources/js/pages/users/Edit.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "__plugin-vue_export-helper-12bcda84.js",
+      "_users-8e0eee24.js",
+      "_auth-c4ae6726.js"
+    ]
+  },
+  "resources/js/pages/users/Index.vue": {
+    "file": "assets/Index-c9bc728c.js",
+    "src": "resources/js/pages/users/Index.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "__plugin-vue_export-helper-12bcda84.js",
+      "_MTColumn-55816288.js",
+      "_users-8e0eee24.js",
+      "_auth-c4ae6726.js"
+    ]
+  },
+  "resources/js/pages/auth/Login.vue": {
+    "file": "assets/Login-81713525.js",
+    "src": "resources/js/pages/auth/Login.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_auth-c4ae6726.js",
+      "__plugin-vue_export-helper-12bcda84.js"
+    ]
+  },
+  "_MTColumn-55816288.js": {
+    "file": "assets/MTColumn-55816288.js",
+    "imports": [
+      "__plugin-vue_export-helper-12bcda84.js"
+    ],
+    "css": [
+      "assets/MTColumn-d0fdf03e.css"
+    ]
+  },
+  "_auth-c4ae6726.js": {
+    "file": "assets/auth-c4ae6726.js",
+    "imports": [
+      "__plugin-vue_export-helper-12bcda84.js"
+    ],
+    "dynamicImports": [
+      "resources/js/pages/Home.vue",
+      "resources/js/pages/auth/Login.vue",
+      "resources/js/pages/auth/Register.vue",
+      "resources/js/pages/users/Index.vue",
+      "resources/js/pages/users/Edit.vue",
+      "resources/js/pages/users/Payments.vue"
+    ]
+  },
+  "__plugin-vue_export-helper-12bcda84.js": {
+    "file": "assets/_plugin-vue_export-helper-12bcda84.js"
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-ec7bfe08.js",
+    "src": "resources/js/app.js",
+    "isEntry": true,
+    "imports": [
+      "_auth-c4ae6726.js",
+      "__plugin-vue_export-helper-12bcda84.js"
+    ]
+  }
+}
