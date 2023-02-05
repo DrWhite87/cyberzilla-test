@@ -10,6 +10,13 @@ use Spatie\LaravelData\Data;
 
 class UserData extends Data
 {
+    /**
+     * UserData constructor.
+     * @param int $id
+     * @param string $name
+     * @param string $email
+     * @param string $phone
+     */
     public function __construct(
         public int $id,
         #[Max(150)]

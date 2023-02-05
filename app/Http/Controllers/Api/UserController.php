@@ -57,7 +57,7 @@ class UserController extends BaseController
     public function update(UserFormData $data, User $user): \Illuminate\Http\JsonResponse
     {
         $user->update($data->toArray());
-        return $this->sendResponse([], 'User update');
+        return $this->sendResponse(['user' => UserData::from($user)], 'User update');
     }
 
     /**
@@ -81,17 +81,19 @@ class UserController extends BaseController
      */
     public function payments(Request $request, User $user): \Illuminate\Http\JsonResponse
     {
-        $paymnets = $user->payments()->with(['user'])->when(!empty($request->query('sort')), function ($q) use ($request) {
-            $sortAttribute = $request->query('sort');
-            $sortDirection = 'ASC';
-            if (strncmp($sortAttribute, '-', 1) === 0) {
-                $sortDirection = 'DESC';
-                $sortAttribute = substr($sortAttribute, 1);
-            }
+        $payments = $user->payments()
+            ->with(['user'])
+            ->when(!empty($request->query('sort')), function ($q) use ($request) {
+                $sortAttribute = $request->query('sort');
+                $sortDirection = 'ASC';
+                if (strncmp($sortAttribute, '-', 1) === 0) {
+                    $sortDirection = 'DESC';
+                    $sortAttribute = substr($sortAttribute, 1);
+                }
 
-            $q->orderBy($sortAttribute, $sortDirection);
-        })->paginate();
+                $q->orderBy($sortAttribute, $sortDirection);
+            })->paginate();
 
-        return $this->sendResponse(['payments' => PaymentData::collection($paymnets)], 'User payments');
+        return $this->sendResponse(['payments' => PaymentData::collection($payments)], 'User payments');
     }
 }

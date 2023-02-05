@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Data\UserData;
 use App\Data\UserLoginData;
 use App\Data\UserRegisterData;
 use App\Models\User;
@@ -20,7 +21,7 @@ class AuthController extends BaseController
      */
     public function register(UserRegisterData $data): \Illuminate\Http\JsonResponse
     {
-        $user = User::create($data->toArray());
+        User::create($data->toArray());
         return $this->sendResponse([], 'User register');
     }
 
@@ -37,7 +38,7 @@ class AuthController extends BaseController
     {
         if (Auth::attempt($data->toArray())) {
             $request->session()->regenerate();
-            return $this->sendResponse(['user' => Auth::user()], 'User login');
+            return $this->sendResponse(['user' => UserData::from(Auth::user())], 'User login');
         }
 
         return $this->sendError('Validation Error.', ['email' => ['Unauthorised']], 422);

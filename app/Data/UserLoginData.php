@@ -7,6 +7,11 @@ use Spatie\LaravelData\Data;
 
 class UserLoginData extends Data
 {
+    /**
+     * UserLoginData constructor.
+     * @param string $email
+     * @param string $password
+     */
     public function __construct(
         #[Email]
         public string $email,

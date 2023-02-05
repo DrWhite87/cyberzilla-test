@@ -10,15 +10,24 @@ use Spatie\LaravelData\Attributes\Validation\Max;
 use Spatie\LaravelData\Attributes\Validation\Min;
 use Spatie\LaravelData\Attributes\Validation\Regex;
 use Spatie\LaravelData\Attributes\Validation\Same;
+use Spatie\LaravelData\Attributes\Validation\Unique;
 use Spatie\LaravelData\Attributes\WithCast;
 use Spatie\LaravelData\Data;
 
 class UserRegisterData extends Data
 {
+    /**
+     * UserRegisterData constructor.
+     * @param string $name
+     * @param string $email
+     * @param string $phone
+     * @param string $password
+     * @param string $passwordConfirmation
+     */
     public function __construct(
         #[Max(150)]
         public string $name,
-        #[Email]
+        #[Unique('users', 'email'), Email]
         public string $email,
         #[WithCast(PhoneCast::class), Regex('/^[0-9\+]+$/i'), Min(9), Max(13)]
         public string $phone,

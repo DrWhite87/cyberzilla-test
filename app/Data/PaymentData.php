@@ -14,6 +14,18 @@ use Spatie\LaravelData\Transformers\DateTimeInterfaceTransformer;
 
 class PaymentData extends Data
 {
+    /**
+     * PaymentData constructor.
+     * @param int $id
+     * @param string $description
+     * @param string $card
+     * @param float $amount
+     * @param float $discount
+     * @param float $total
+     * @param PaymentStatus $status
+     * @param Carbon|null $created_at
+     * @param UserData|Optional $user
+     */
     public function __construct(
         public int $id,
         public string $description,

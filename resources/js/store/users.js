@@ -1,7 +1,9 @@
 import {defineStore} from 'pinia';
 import axios from 'axios';
-import {ref, reactive, watch} from 'vue';
-import handleError from '@/libs/axiosErrorHandler'
+import {ref, reactive} from 'vue';
+import handleError from '@/libs/axiosErrorHandler';
+import {useAuthStore} from "@/store/auth";
+
 
 export const useUsersStore = defineStore(
     'users',
@@ -11,6 +13,8 @@ export const useUsersStore = defineStore(
         const query = reactive({
             page: 1
         });
+
+        const AuthStore = useAuthStore();
 
         const getOne = (id) => {
             return users.value.data.find(item => item.id === parseInt(id));
@@ -53,6 +57,9 @@ export const useUsersStore = defineStore(
             return axios.patch('/api/users/' + id, data).then(({data}) => {
                 if (data.success && data.data.user) {
                     setOne(data.data.user);
+                    if(AuthStore.viewer.id === data.data.user.id){
+                        AuthStore.viewer = data.data.user;
+                    }
                 }
             }).catch((error) => {
                 handleError(error);
