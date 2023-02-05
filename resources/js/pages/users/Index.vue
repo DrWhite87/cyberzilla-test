@@ -68,6 +68,7 @@ export default {
 
         /* change query search */
         const onSearchChange = _.debounce((e) => {
+            UsersStore.query.page = 1;
             UsersStore.query.search = e.target.value;
             UsersStore.fetchAll();
         }, 300);

@@ -8,30 +8,20 @@
     "src": "resources/sass/app.scss",
     "isEntry": true
   },
-  "_users-8e0eee24.js": {
-    "file": "assets/users-8e0eee24.js",
-    "imports": [
-      "_auth-c4ae6726.js",
-      "__plugin-vue_export-helper-12bcda84.js"
-    ]
-  },
   "resources/js/pages/auth/Register.vue": {
-    "file": "assets/Register-06ff9ce0.js",
+    "file": "assets/Register-127d4745.js",
     "src": "resources/js/pages/auth/Register.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_auth-c4ae6726.js",
+      "_auth-1d42bfe6.js",
       "__plugin-vue_export-helper-12bcda84.js"
     ]
   },
-  "resources/js/pages/users/Payments.vue": {
-    "file": "assets/Payments-de595ca4.js",
-    "src": "resources/js/pages/users/Payments.vue",
-    "isDynamicEntry": true,
+  "_users-b4bbf877.js": {
+    "file": "assets/users-b4bbf877.js",
     "imports": [
-      "__plugin-vue_export-helper-12bcda84.js",
-      "_MTColumn-55816288.js",
-      "_auth-c4ae6726.js"
+      "_auth-1d42bfe6.js",
+      "__plugin-vue_export-helper-12bcda84.js"
     ]
   },
   "resources/js/pages/Home.vue": {
@@ -42,34 +32,44 @@
       "__plugin-vue_export-helper-12bcda84.js"
     ]
   },
+  "resources/js/pages/auth/Login.vue": {
+    "file": "assets/Login-d442604c.js",
+    "src": "resources/js/pages/auth/Login.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_auth-1d42bfe6.js",
+      "__plugin-vue_export-helper-12bcda84.js"
+    ]
+  },
   "resources/js/pages/users/Edit.vue": {
-    "file": "assets/Edit-e10683a0.js",
+    "file": "assets/Edit-235eba08.js",
     "src": "resources/js/pages/users/Edit.vue",
     "isDynamicEntry": true,
     "imports": [
       "__plugin-vue_export-helper-12bcda84.js",
-      "_users-8e0eee24.js",
-      "_auth-c4ae6726.js"
+      "_users-b4bbf877.js",
+      "_auth-1d42bfe6.js"
     ]
   },
   "resources/js/pages/users/Index.vue": {
-    "file": "assets/Index-c9bc728c.js",
+    "file": "assets/Index-c41d906b.js",
     "src": "resources/js/pages/users/Index.vue",
     "isDynamicEntry": true,
     "imports": [
       "__plugin-vue_export-helper-12bcda84.js",
       "_MTColumn-55816288.js",
-      "_users-8e0eee24.js",
-      "_auth-c4ae6726.js"
+      "_users-b4bbf877.js",
+      "_auth-1d42bfe6.js"
     ]
   },
-  "resources/js/pages/auth/Login.vue": {
-    "file": "assets/Login-81713525.js",
-    "src": "resources/js/pages/auth/Login.vue",
+  "resources/js/pages/users/Payments.vue": {
+    "file": "assets/Payments-a7f80c52.js",
+    "src": "resources/js/pages/users/Payments.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_auth-c4ae6726.js",
-      "__plugin-vue_export-helper-12bcda84.js"
+      "__plugin-vue_export-helper-12bcda84.js",
+      "_MTColumn-55816288.js",
+      "_auth-1d42bfe6.js"
     ]
   },
   "_MTColumn-55816288.js": {
@@ -81,8 +81,8 @@
       "assets/MTColumn-d0fdf03e.css"
     ]
   },
-  "_auth-c4ae6726.js": {
-    "file": "assets/auth-c4ae6726.js",
+  "_auth-1d42bfe6.js": {
+    "file": "assets/auth-1d42bfe6.js",
     "imports": [
       "__plugin-vue_export-helper-12bcda84.js"
     ],
@@ -99,11 +99,11 @@
     "file": "assets/_plugin-vue_export-helper-12bcda84.js"
   },
   "resources/js/app.js": {
-    "file": "assets/app-ec7bfe08.js",
+    "file": "assets/app-cba08085.js",
     "src": "resources/js/app.js",
     "isEntry": true,
     "imports": [
-      "_auth-c4ae6726.js",
+      "_auth-1d42bfe6.js",
       "__plugin-vue_export-helper-12bcda84.js"
     ]
   }
