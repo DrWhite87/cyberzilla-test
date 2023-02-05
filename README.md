@@ -51,7 +51,9 @@ $ php artisan db:seed
 $ SANCTUM_STATEFUL_DOMAINS=ваш домен
 ```
 
-## Авторизация
+## Тестовый адрес
+
+https://cyberzilla.stopugroza.ru/
 
 ```
 Login: admin@admin.com
