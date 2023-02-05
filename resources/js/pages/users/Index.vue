@@ -19,7 +19,7 @@
             <MTColumn attribute="phone" label="Phone"></MTColumn>
             <MTColumn attribute="actions" label="Actions">
                 <template #body="{row}">
-                    <router-link :to="{name: 'users.edit', params: {id: row.id}}" @click.prevent class="text-secondary mr-1">Edit</router-link>
+                    <router-link :to="{name: 'users.edit', params: {id: row.id}}" @click.stop.prevent class="text-secondary mr-1">Edit</router-link>
                     |
                     <a href @click.prevent.stop="destroy(row.id)" class="text-secondary">Delete</a>
                 </template>
