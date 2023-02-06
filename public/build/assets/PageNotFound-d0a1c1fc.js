@@ -1,0 +1,1 @@
+import{_ as o,a as t,o as s,b as e}from"./_plugin-vue_export-helper-b42ff5c8.js";const n={name:"Home"},c={class:"container mt-5"},a=e("div",{class:"col-12 text-center"},[e("h1",null,"404"),e("p",null,"Page not found")],-1),r=[a];function _(d,l,i,p,u,f){return s(),t("div",c,r)}const h=o(n,[["render",_]]);export{h as default};

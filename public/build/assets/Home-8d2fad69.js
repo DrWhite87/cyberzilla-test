@@ -1,0 +1,1 @@
+import{_ as t,a as o,o as s,b as e}from"./_plugin-vue_export-helper-b42ff5c8.js";const a={name:"Home"},c={class:"container mt-5"},n=e("div",{class:"col-12 text-center"},[e("h1",null,"CyberZilla"),e("a",{href:"https://cyberzilla.io/",target:"_blank"},"Web site")],-1),r=[n];function _(i,l,d,p,m,f){return s(),o("div",c,r)}const b=t(a,[["render",_]]);export{b as default};
