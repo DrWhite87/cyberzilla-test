@@ -28,10 +28,7 @@
             <MTColumn attribute="total" label="Total" :sortable="true"></MTColumn>
             <MTColumn attribute="status" label="Status" :sortable="true">
                 <template #body="{row}">
-                    <div v-if="row.status === 1" class="d-inline-block px-2 bg-primary text-white">New</div>
-                    <div v-else-if="row.status === 2" class="d-inline-block px-2 bg-info text-white">Processed</div>
-                    <div v-else-if="row.status === 3" class="d-inline-block px-2 bg-success text-white">Paid</div>
-                    <div v-else-if="row.status === 4" class="d-inline-block px-2 bg-danger text-white">Cancel</div>
+                    <PaymentStatus :status="row.status" />
                 </template>
             </MTColumn>
             <MTColumn attribute="actions" label="Actions">
@@ -49,12 +46,13 @@
 import {onMounted, computed} from 'vue';
 import MTable from "@/components/table/MTable.vue";
 import MTColumn from "@/components/table/MTColumn.vue";
+import PaymentStatus from "@/components/payments/PaymentStatus.vue";
 import {usePaymentsStore} from "@/store/payments";
 import {useRoute} from "vue-router";
 
 export default {
     name: "UserPayments",
-    components: {MTColumn, MTable},
+    components: {PaymentStatus, MTColumn, MTable},
     setup() {
         const PaymentsStore = usePaymentsStore();
         const payments = computed(() => PaymentsStore.payments);

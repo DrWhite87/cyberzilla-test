@@ -5,22 +5,22 @@
     <div class="container p-3 mb-4 bg-white">
         <div class="card-body">
             <div class="row">
-                <div class="col-6">
+                <div class="col-6 my-1">
                     Name
                 </div>
-                <div class="col-6">
+                <div class="col-6 my-1">
                     {{ user.name }}
                 </div>
-                <div class="col-6">
+                <div class="col-6 my-1">
                     Email
                 </div>
-                <div class="col-6">
+                <div class="col-6 my-1">
                     {{ user.email }}
                 </div>
-                <div class="col-6">
+                <div class="col-6 my-1">
                     Phone
                 </div>
-                <div class="col-6">
+                <div class="col-6 my-1">
                     {{ user.phone }}
                 </div>
                 <div class="col-12 my-2">
