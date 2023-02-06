@@ -81,7 +81,10 @@ class UserController extends BaseController
      */
     public function destroy(User $user): \Illuminate\Http\JsonResponse
     {
-        $user->delete();
-        return $this->sendResponse([], 'User delete');
+        if($user->id !== auth()->user()->id){
+            $user->delete();
+            return $this->sendResponse([], 'User delete');
+        }
+        return $this->sendError('Error. This current user!', [], 422);
     }
 }

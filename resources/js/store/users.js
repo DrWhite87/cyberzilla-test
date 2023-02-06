@@ -64,6 +64,9 @@ export const useUsersStore = defineStore(
                     fetchAll();
                 }
             }).catch((error) => {
+                if(error.response.status === 422 && error.response?.data?.message){
+                    alert(error.response.data.message);
+                }
                 handleError(error);
             });
         };
