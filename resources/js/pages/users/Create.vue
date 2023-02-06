@@ -55,10 +55,7 @@ export default {
     name: 'UsersCreate',
     setup() {
         const UsersStore = useUsersStore();
-        const route = useRoute();
         const router = useRouter();
-
-        UsersStore.fetchOne(route.params.user);
 
         const form = reactive({
             name: "",

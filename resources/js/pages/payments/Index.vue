@@ -35,7 +35,7 @@
                 <template #body="{row}">
                     <router-link :to="{name: 'users.payments.edit', params: {user: $route.params.user, payment: row.id}}" @click.stop.prevent class="text-secondary mr-1">Edit</router-link>
                     |
-                    <a href @click.prevent="destroy(row.id)" class="text-secondary">Delete</a>
+                    <a href @click.prevent.stop="destroy(row.id)" class="text-secondary">Delete</a>
                 </template>
             </MTColumn>
         </MTable>
@@ -59,9 +59,7 @@ export default {
         const sort = computed(() => PaymentsStore.query.sort || '');
         const route = useRoute();
 
-        onMounted(() => {
-            PaymentsStore.fetchAll(route.params.user);
-        });
+        PaymentsStore.fetchAll(route.params.user);
 
         /* destroy user */
         const destroy = (id) => {
