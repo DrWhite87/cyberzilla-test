@@ -4,17 +4,12 @@
     </div>
     <div class="container p-3 mb-4 bg-white">
         <div class="card-body">
-            <form @submit.prevent="update" class="row">
+            <form @submit.prevent="store" class="row">
                 <div class="col-12" v-if="Object.keys(validationErrors).length > 0">
                     <div class="alert alert-danger">
                         <ul class="mb-0">
                             <li v-for="(value, key) in validationErrors" :key="key">{{ value[0] }}</li>
                         </ul>
-                    </div>
-                </div>
-                <div class="col-12" v-if="updated">
-                    <div class="alert alert-success">
-                        Saved!
                     </div>
                 </div>
                 <div class="form-group col-12">
@@ -28,6 +23,15 @@
                 <div class="form-group col-12 my-2">
                     <label for="phone" class="font-weight-bold">Phone</label>
                     <input type="text" name="phone" v-model="form.phone" id="phone" placeholder="Enter Phone" class="form-control">
+                </div>
+                <div class="form-group col-12">
+                    <label for="password" class="font-weight-bold">Password</label>
+                    <input type="password" name="password" v-model="form.password" id="password" placeholder="Enter Password" class="form-control">
+                </div>
+                <div class="form-group col-12 my-2">
+                    <label for="password_confirmation" class="font-weight-bold">Confirm Password</label>
+                    <input type="password" name="password_confirmation" v-model="form.password_confirmation" id="password_confirmation" placeholder="Enter Password"
+                           class="form-control">
                 </div>
                 <div class="col-12 my-2">
                     <button type="button" class="btn btn-dark btn-block" @click="$router.back()">
@@ -45,29 +49,33 @@
 <script>
 import {computed, reactive, ref} from 'vue';
 import {useUsersStore} from "@/store/users";
-import {useRoute} from "vue-router";
+import {useRoute, useRouter} from "vue-router";
 
 export default {
-    name: 'UsersEdit',
+    name: 'UsersCreate',
     setup() {
         const UsersStore = useUsersStore();
-        const user = computed(() => UsersStore.user);
         const route = useRoute();
+        const router = useRouter();
 
         UsersStore.fetchOne(route.params.user);
 
-        const form = reactive(user);
+        const form = reactive({
+            name: "",
+            email: "",
+            phone: "",
+            password: "",
+            password_confirmation: ""
+        });
 
         const validationErrors = ref({});
         const processing = ref(false);
-        const updated = ref(false);
 
-        const update = async () => {
-            processing.value = true;
-            updated.value = false;
-            await UsersStore.update(route.params.user, form.value).then(response => {
+        const store = async () => {
+            processing.value = true
+            await UsersStore.store(form).then(({data}) => {
                 validationErrors.value = {};
-                updated.value = true;
+                router.push({name: 'users.show', params: {user: data.data.user.id}});
             }).catch(({response}) => {
                 if (response.status === 422) {
                     validationErrors.value = response.data.errors;
@@ -83,8 +91,7 @@ export default {
             form,
             validationErrors,
             processing,
-            updated,
-            update
+            store
         }
     }
 }

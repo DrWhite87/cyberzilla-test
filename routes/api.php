@@ -30,7 +30,27 @@ Route::middleware('auth:sanctum')->group(function () {
     });
 
     Route::resource('users', \App\Http\Controllers\Api\UserController::class);
-    Route::get('/users/{user}/payments', [\App\Http\Controllers\Api\UserController::class, 'payments'])->where(['user' => '[0-9]+']);
 
-    Route::delete('/payments/{payment}', [\App\Http\Controllers\Api\PaymentController::class, 'destroy'])->where(['payment' => '[0-9]+']);
+    Route::get('/users/{user}/payments', [\App\Http\Controllers\Api\PaymentController::class, 'index'])
+        ->where(['user' => '[0-9]+'])
+        ->name('users.payments');
+
+    Route::get('/users/{user}/payments/{payment}', [\App\Http\Controllers\Api\PaymentController::class, 'show'])
+        ->where(['user' => '[0-9]+', 'payment' => '[0-9]+'])
+        ->name('users.payments.show');
+
+    Route::get('/payments/statuses', [\App\Http\Controllers\Api\PaymentController::class, 'statuses'])
+        ->name('users.payments.statuses');
+
+    Route::post('/users/{user}/payments', [\App\Http\Controllers\Api\PaymentController::class, 'store'])
+        ->where(['user' => '[0-9]+', 'payment' => '[0-9]+'])
+        ->name('users.payments.store');
+
+    Route::patch('/payments/{payment}', [\App\Http\Controllers\Api\PaymentController::class, 'update'])
+        ->where(['payment' => '[0-9]+'])
+        ->name('users.payments.update');
+
+    Route::delete('/payments/{payment}', [\App\Http\Controllers\Api\PaymentController::class, 'destroy'])
+        ->where(['payment' => '[0-9]+'])
+        ->name('users.payments.destroy');
 });

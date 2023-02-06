@@ -15,5 +15,10 @@ export default (error) => {
         return;
     }
 
+    if (statusCode === 404) {
+        router.back();
+        return;
+    }
+
     throw error;
 };

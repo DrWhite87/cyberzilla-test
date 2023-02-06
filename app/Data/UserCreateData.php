@@ -14,7 +14,7 @@ use Spatie\LaravelData\Attributes\Validation\Unique;
 use Spatie\LaravelData\Attributes\WithCast;
 use Spatie\LaravelData\Data;
 
-class UserRegisterData extends Data
+class UserCreateData extends Data
 {
     /**
      * UserRegisterData constructor.

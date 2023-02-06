@@ -18,16 +18,27 @@
                     </div>
                 </div>
                 <div class="form-group col-12">
-                    <label for="name" class="font-weight-bold">Name</label>
-                    <input type="text" name="name" v-model="form.name" id="name" placeholder="Enter name" class="form-control">
+                    <label for="description" class="font-weight-bold">Description</label>
+                    <textarea name="description" v-model="form.description" id="description" placeholder="Enter Description" class="form-control"></textarea>
                 </div>
                 <div class="form-group col-12 my-2">
-                    <label for="email" class="font-weight-bold">Email</label>
-                    <input type="text" name="email" v-model="form.email" id="email" placeholder="Enter Email" class="form-control">
+                    <label for="card" class="font-weight-bold">Card</label>
+                    <input type="text" name="card" v-model="form.card" id="card" placeholder="Enter Card Num" class="form-control">
                 </div>
                 <div class="form-group col-12 my-2">
-                    <label for="phone" class="font-weight-bold">Phone</label>
-                    <input type="text" name="phone" v-model="form.phone" id="phone" placeholder="Enter Phone" class="form-control">
+                    <label for="amount" class="font-weight-bold">Amount</label>
+                    <input type="text" name="amount" v-model="form.amount" id="amount" placeholder="Enter Amount" class="form-control">
+                </div>
+                <div class="form-group col-12 my-2">
+                    <label for="discount" class="font-weight-bold">Discount</label>
+                    <input type="text" name="discount" v-model="form.discount" id="discount" placeholder="Enter Discount" class="form-control">
+                </div>
+                <div class="form-group col-12">
+                    <label for="status" class="font-weight-bold">Password</label>
+                    <select name="status" id="status" v-model="form.status" class="form-select" aria-label="Select Status">
+                        <option value="" selected>Select Status</option>
+                        <option v-for="(status, key) in statuses" :key="key" :value="key">{{ status }}</option>
+                    </select>
                 </div>
                 <div class="col-12 my-2">
                     <button type="button" class="btn btn-dark btn-block" @click="$router.back()">
@@ -44,19 +55,22 @@
 
 <script>
 import {computed, reactive, ref} from 'vue';
-import {useUsersStore} from "@/store/users";
-import {useRoute} from "vue-router";
+import {usePaymentsStore} from "@/store/payments";
+import {useRoute, useRouter} from "vue-router";
 
 export default {
-    name: 'UsersEdit',
+    name: 'UsersPaymentsCreate',
     setup() {
-        const UsersStore = useUsersStore();
-        const user = computed(() => UsersStore.user);
+        const PaymentsStore = usePaymentsStore();
+        const payment = computed(() => PaymentsStore.payment);
         const route = useRoute();
 
-        UsersStore.fetchOne(route.params.user);
+        PaymentsStore.fetchStatuses();
+        PaymentsStore.fetchOne(route.params.user, route.params.payment);
 
-        const form = reactive(user);
+        const statuses = computed(() => PaymentsStore.statuses);
+
+        const form = reactive(payment);
 
         const validationErrors = ref({});
         const processing = ref(false);
@@ -65,7 +79,7 @@ export default {
         const update = async () => {
             processing.value = true;
             updated.value = false;
-            await UsersStore.update(route.params.user, form.value).then(response => {
+            await PaymentsStore.update(route.params.payment, form.value).then(({data}) => {
                 validationErrors.value = {};
                 updated.value = true;
             }).catch(({response}) => {
@@ -83,6 +97,7 @@ export default {
             form,
             validationErrors,
             processing,
+            statuses,
             updated,
             update
         }

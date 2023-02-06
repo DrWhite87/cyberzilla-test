@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Data\PaymentData;
 use App\Data\UserData;
 use App\Data\UserFormData;
+use App\Data\UserCreateData;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -34,6 +35,18 @@ class UserController extends BaseController
         })->paginate();
 
         return $this->sendResponse(['users' => UserData::collection($users)], 'User list');
+    }
+
+    /**
+     * Create the specified resource in storage.
+     *
+     * @param UserFormData $data
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function store(UserCreateData $data): \Illuminate\Http\JsonResponse
+    {
+        $user = User::create($data->toArray());
+        return $this->sendResponse(['user' => UserData::from($user)], 'User create');
     }
 
     /**
@@ -70,30 +83,5 @@ class UserController extends BaseController
     {
         $user->delete();
         return $this->sendResponse([], 'User delete');
-    }
-
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @param User $user
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function payments(Request $request, User $user): \Illuminate\Http\JsonResponse
-    {
-        $payments = $user->payments()
-            ->with(['user'])
-            ->when(!empty($request->query('sort')), function ($q) use ($request) {
-                $sortAttribute = $request->query('sort');
-                $sortDirection = 'ASC';
-                if (strncmp($sortAttribute, '-', 1) === 0) {
-                    $sortDirection = 'DESC';
-                    $sortAttribute = substr($sortAttribute, 1);
-                }
-
-                $q->orderBy($sortAttribute, $sortDirection);
-            })->paginate();
-
-        return $this->sendResponse(['payments' => PaymentData::collection($payments)], 'User payments');
     }
 }

@@ -5,8 +5,14 @@ const Home = () => import('./pages/Home.vue');
 const Login = () => import('./pages/auth/Login.vue');
 const Register = () => import('./pages/auth/Register.vue');
 const UsersIndex = () => import('./pages/users/Index.vue');
+const UsersShow = () => import('./pages/users/Show.vue');
+const UsersCreate = () => import('./pages/users/Create.vue');
 const UsersEdit = () => import('./pages/users/Edit.vue');
-const UsersPayments = () => import('./pages/users/Payments.vue');
+const UsersPaymentsIndex = () => import('./pages/payments/Index.vue');
+const UsersPaymentsShow = () => import('./pages/payments/Show.vue');
+const UsersPaymentsCreate = () => import('./pages/payments/Create.vue');
+const UsersPaymentsEdit = () => import('./pages/payments/Edit.vue');
+const PageNotFound = () => import('./pages/PageNotFound.vue');
 
 const router = createRouter({
     history: createWebHistory(),
@@ -48,8 +54,26 @@ const router = createRouter({
             },
         },
         {
+            name: 'users.show',
+            path: '/users/:user/show',
+            component: UsersShow,
+            meta: {
+                middleware: "auth",
+                title: 'Show User'
+            },
+        },
+        {
+            name: 'users.create',
+            path: '/users/create',
+            component: UsersCreate,
+            meta: {
+                middleware: "auth",
+                title: 'Create User'
+            },
+        },
+        {
             name: 'users.edit',
-            path: '/users/:id/edit',
+            path: '/users/:user/edit',
             component: UsersEdit,
             meta: {
                 middleware: "auth",
@@ -57,13 +81,45 @@ const router = createRouter({
             },
         },
         {
-            name: 'users.payments',
-            path: '/users/:id/payments',
-            component: UsersPayments,
+            name: 'users.payments.index',
+            path: '/users/:user/payments',
+            component: UsersPaymentsIndex,
             meta: {
                 middleware: "auth",
                 title: 'User Payments'
             },
+        },
+        {
+            name: 'users.payments.show',
+            path: '/users/:user/payments/:payment/show',
+            component: UsersPaymentsShow,
+            meta: {
+                middleware: "auth",
+                title: 'Show User Payment'
+            },
+        },
+        {
+            name: 'users.payments.create',
+            path: '/users/:user/payments/create',
+            component: UsersPaymentsCreate,
+            meta: {
+                middleware: "auth",
+                title: 'Create User Payment'
+            },
+        },
+        {
+            name: 'users.payments.edit',
+            path: '/users/:user/payments/:payment/edit',
+            component: UsersPaymentsEdit,
+            meta: {
+                middleware: "auth",
+                title: 'Edit User Payment'
+            },
+        },
+        {
+            path: "/:pathMatch(.*)",
+            name: "page404",
+            component: PageNotFound
         }
     ]
 })

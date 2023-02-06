@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Data\UserData;
 use App\Data\UserLoginData;
-use App\Data\UserRegisterData;
+use App\Data\UserCreateData;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,10 +16,10 @@ class AuthController extends BaseController
     /**
      * Register api
      *
-     * @param UserRegisterData $data
+     * @param UserCreateData $data
      * @return \Illuminate\Http\JsonResponse
      */
-    public function register(UserRegisterData $data): \Illuminate\Http\JsonResponse
+    public function register(UserCreateData $data): \Illuminate\Http\JsonResponse
     {
         User::create($data->toArray());
         return $this->sendResponse([], 'User register');

@@ -2,7 +2,12 @@
 
 namespace App\Exceptions;
 
+use Illuminate\Auth\AuthenticationException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\Response;
+use Illuminate\Session\TokenMismatchException;
+use Illuminate\Validation\ValidationException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -46,5 +51,54 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+    }
+
+    protected function unauthenticated($request, AuthenticationException $exception)
+    {
+        return response()->json([
+            'status' => false,
+            'statusCode' => Response::HTTP_UNAUTHORIZED,
+            'message' => 'Unauthenticated.',
+            'result' => (object)[],
+        ], Response::HTTP_UNAUTHORIZED);
+    }
+
+    /**
+     * Render an exception into an HTTP response.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Throwable $exception
+     * @return \Symfony\Component\HttpFoundation\Response
+     *
+     * @throws \Throwable
+     */
+    public function render($request, Throwable $exception)
+    {
+        if ($exception instanceof ModelNotFoundException) {
+            return response()->json([
+                'success' => false,
+                'statusCode' => Response::HTTP_NOT_FOUND,
+                'message' => 'Not Found.',
+            ], Response::HTTP_NOT_FOUND);
+        }
+
+        if ($exception instanceof TokenMismatchException) {
+            return response()->json([
+                'success' => false,
+                'statusCode' => Response::HTTP_UNAUTHORIZED,
+                'message' => 'Unauthenticated. TokenMismatchException',
+            ], Response::HTTP_UNAUTHORIZED);
+        }
+
+        if ($exception instanceof ValidationException) {
+            return response()->json([
+                'success' => false,
+                'statusCode' => Response::HTTP_UNPROCESSABLE_ENTITY,
+                'message' => 'The given data was invalid.',
+                'errors' => $exception->errors(),
+            ], Response::HTTP_UNPROCESSABLE_ENTITY);
+        }
+
+        return parent::render($request, $exception);
     }
 }

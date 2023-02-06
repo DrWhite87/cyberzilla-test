@@ -20,23 +20,10 @@ export const useUsersStore = defineStore(
             return users.value.data.find(item => item.id === parseInt(id));
         };
 
-        const setOne = (user) => {
-            if (!users.value?.data) {
-                return;
-            }
-            let index = users.value.data.findIndex(item => item.id === user.id);
-            if (index > -1) {
-                users.value.data.splice(index, 1, user);
-            } else {
-                users.value.data.push(user);
-            }
-        };
-
         const fetchOne = (id) => {
             return axios.get('/api/users/' + id).then(({data}) => {
                 if (data.success && data.data.user) {
                     user.value = data.data.user;
-                    setOne(data.data.user);
                 }
             }).catch((error) => {
                 handleError(error);
@@ -53,11 +40,16 @@ export const useUsersStore = defineStore(
             });
         };
 
+        const store = (data) => {
+            return axios.post('/api/users', data).catch((error) => {
+                handleError(error);
+            });
+        };
+
         const update = (id, data) => {
             return axios.patch('/api/users/' + id, data).then(({data}) => {
                 if (data.success && data.data.user) {
-                    setOne(data.data.user);
-                    if(AuthStore.viewer.id === data.data.user.id){
+                    if (AuthStore.viewer.id === data.data.user.id) {
                         AuthStore.viewer = data.data.user;
                     }
                 }
@@ -67,7 +59,7 @@ export const useUsersStore = defineStore(
         };
 
         const destroy = (id) => {
-            axios.delete('/api/users/' + id).then(({data}) => {
+            return axios.delete('/api/users/' + id).then(({data}) => {
                 if (data.success) {
                     fetchAll();
                 }
@@ -83,6 +75,7 @@ export const useUsersStore = defineStore(
             getOne,
             fetchOne,
             fetchAll,
+            store,
             update,
             destroy
         }
